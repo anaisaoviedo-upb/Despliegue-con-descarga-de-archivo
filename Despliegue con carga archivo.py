@@ -39,7 +39,7 @@ st.title('Predicción de ventas')
 uploaded_file = st.file_uploader("Sube el archivo Excel con los datos a predecir",type=["xlsx"])
 
 #Se valida si el archivo fue cargado
-if uploaded_file is not None:
+if uploaded_file:
     data = pd.read_excel(uploaded_file)
     st.dataframe(data.head())
     
