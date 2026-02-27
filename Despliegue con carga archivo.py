@@ -36,14 +36,14 @@ st.title('Predicción de ventas')
 
 
 # Cargar archivo
-uploaded_file = st.file_uploader("Sube el archivo Excel con los datos a predecir",type=["xlsx"])
+uploaded_file = st.file_uploader("Sube el archivo CSV con los datos a predecir",type=["csv"])
 
 #Se valida si el archivo fue cargado
 if uploaded_file is None:
     st.info("Carga un archivo para habilitar la predicción.")
     st.stop()
 
-data = pd.read_excel(uploaded_file)
+data = pd.read_csv(uploaded_file)
 st.dataframe(data.head())
 
 # Boton de predecir
