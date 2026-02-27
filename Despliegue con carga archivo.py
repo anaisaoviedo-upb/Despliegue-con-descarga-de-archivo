@@ -36,21 +36,16 @@ st.title('Predicción de ventas')
 
 
 # Cargar archivo
-uploaded_file = st.file_uploader(
-    "Sube el archivo Excel con los datos a predecir",
-    type=["xlsx"]
-)
+uploaded_file = st.file_uploader("Sube el archivo Excel con los datos a predecir",type=["xlsx"])
 
 #Se valida si el archivo fue cargado
-if uploaded_file is not None:
-    try:
-        data = pd.read_excel(uploaded_file)
-        st.success("Archivo cargado correctamente ✅")
-        st.dataframe(data.head())
-    except Exception as e:
-        st.error(f"Error al leer el archivo: {e}")
-else:
-    st.info("Por favor sube un archivo Excel para continuar.")
+if uploaded_file:
+    data = pd.read_excel(uploaded_file)
+    st.dataframe(data.head())
+
+if not st.button("Predecir"):
+    st.stop()   #No continúa hasta que presionen
+    
 
 #Se realiza la preparación
 data_preparada=data.copy()
