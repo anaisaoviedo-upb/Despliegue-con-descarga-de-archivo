@@ -77,11 +77,11 @@ data
 
 st.warning("El modelo tiene un error del 4%")
 
-#descargar resultados en excel
-csv = data.to_csv("predicciones.csv")
+#descargar resultados 
+csv = data.to_csv(index=False).encode("utf-8")
 
 st.download_button(
-    label="Descargar resultados en Excel",
+    label="Descargar resultados",
     data=csv,
     file_name="resultados_prediccion.csv",
     mime="text/csv"
